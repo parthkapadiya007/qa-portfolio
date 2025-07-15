@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Parth QA Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- AOS for scroll animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+    header {
+      background: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav a {
+      margin: 10px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    #hero-slider {
+      position: relative;
+      height: 200px;
+      background: #222;
+      color: white;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slide.active {
+      opacity: 1;
+    }
+    section {
+      padding: 30px;
+      background: white;
+      margin: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    section h2 {
+      color: #003366;
+    }
+    ul, ol {
+      padding-left: 20px;
+    }
+    footer {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    /* --- Popup Modal --- */
+    #introModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    #introBox {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 20px #003366;
+    }
+    #introBox h2 {
+      color: #003366;
+    }
+    #startBtn {
+      background: #003366;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 5px 0;
+      }
+      #hero-slider {
+        font-size: 18px;
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Intro Modal -->
+  <div id="introModal">
+    <div id="introBox">
+      <h2>Welcome!</h2>
+      <p>This QA website is proudly built by <strong>Parth Kapadiya</strong> using automation & frontend magic 💻✨</p>
+      <button id="startBtn">Start Tour</button>
+    </div>
+  </div>
+
+  <header>
+    <h1>Parth QA Solutions</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#what-is-qa">What is QA?</a>
+      <a href="#testing-types">Testing Types</a>
+      <a href="#qa-process">QA Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="hero-slider">
+    <div class="slide active">Quality is not an act, it is a habit.</div>
+    <div class="slide">Delivering Bug-Free Products</div>
+    <div class="slide">End-to-End QA Solutions</div>
+  </section>
+
+  <section id="what-is-qa" data-aos="fade-up">
+    <h2><i class="fa-solid fa-shield-halved"></i> What is Quality Assurance?</h2>
+    <p>Quality Assurance (QA) is a systematic process that ensures a product or service meets specified requirements and quality standards. It involves planning, execution, and review to detect and prevent defects.</p>
+  </section>
+
+  <section id="testing-types" data-aos="fade-right">
+    <h2><i class="fa-solid fa-vial"></i> Types of Testing</h2>
+    <ul>
+      <li><i class="fa-solid fa-bug"></i> Manual Testing</li>
+      <li><i class="fa-solid fa-robot"></i> Automation Testing</li>
+      <li><i class="fa-solid fa-check-double"></i> Functional Testing</li>
+      <li><i class="fa-solid fa-rotate-left"></i> Regression Testing</li>
+      <li><i class="fa-solid fa-gauge-high"></i> Performance Testing</li>
+      <li><i class="fa-solid fa-plug-circle-bolt"></i> API Testing</li>
+      <li><i class="fa-solid fa-laptop-code"></i> UI/UX Testing</li>
+    </ul>
+  </section>
+
+  <section id="qa-process" data-aos="fade-left">
+    <h2><i class="fa-solid fa-diagram-project"></i> QA Process</h2>
+    <ol>
+      <li>Requirement Analysis</li>
+      <li>Test Planning</li>
+      <li>Test Case Design</li>
+      <li>Test Execution</li>
+      <li>Defect Logging</li>
+      <li>Reporting & Test Closure</li>
+    </ol>
+  </section>
+
+  <section id="contact" data-aos="zoom-in">
+    <h2><i class="fa-solid fa-envelope"></i> Contact Us</h2>
+    <p>Email: <a href="mailto:contact@parthqasolutions.com">contact@parthqasolutions.com</a></p>
+    <p>Phone: +91 9876543210</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Parth QA Solutions</p>
+  </footer>
+
+  <!-- JS: Slider -->
+  <script>
+    let slides = document.querySelectorAll('.slide');
+    let current = 0;
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) slide.classList.add('active');
+      });
+    }
+    setInterval(() => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }, 3000);
+  </script>
+
+  <!-- AOS Animation JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <!-- Auto Scroll + Voice -->
+  <script>
+    const sections = document.querySelectorAll("section");
+    let currentIndex = 0;
+
+    function autoScrollTour() {
+      if (currentIndex >= sections.length) return;
+
+      const section = sections[currentIndex];
+      section.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      section.style.border = "3px solid #003366";
+      section.style.boxShadow = "0 0 15px #003366";
+
+      // Voice speak
+      const text = section.innerText;
+      const msg = new SpeechSynthesisUtterance(text);
+      msg.lang = "en-US";
+      window.speechSynthesis.speak(msg);
+
+      setTimeout(() => {
+        section.style.border = "none";
+        section.style.boxShadow = "none";
+        currentIndex++;
+        autoScrollTour();
+      }, 6000); // 6 seconds per section
+    }
+
+    // Start tour when "Start" clicked
+    document.getElementById("startBtn").addEventListener("click", () => {
+      document.getElementById("introModal").style.display = "none";
+      autoScrollTour();
+    });
+  </script>
+
+</body>
+</html>
